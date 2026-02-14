@@ -1,26 +1,96 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fffffff7;
+  --foreground: #992325;
+  --text: #000000;
+  --border: #fd8f913d;
+  --cards: #FAB6B6;
+  --once: #DE5505;
+  --gloo: #8831D9;
+  --repeating-lines: #f7565639;
+  --pattern: #da525223;
+}
+
+.dark {
+  --background: #000000;
+  --foreground: #708E05;
+  --text: #ffffff;
+  --border: #d8fc5818;
+  --cards: #36392C;
+  --once: #DE5505;
+  --gloo: #8831D9;
+  --repeating-lines: #d7fe5824;
+  --pattern: #b6d0562c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-border: var(--border);
+  --color-cards: var(--cards);
+  --color-once: var(--once);
+  --color-gloo: var(--gloo);
+  --color-text: var(--text);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-arka: var(--font-splash);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+
+  .double-line {
+    position: relative;
   }
-}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  .line-above {
+    position: relative;
+  }
+
+  .line-bottom {
+    position: relative;
+  }
+
+  .double-line::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    height: 24px;
+    top: -24px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  .line-bottom::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    height: 1px;
+    bottom: -10px;
+    background-color: var(--border);
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  .line-above::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    height: 1px;
+    top: -10px;
+    background-color: var(--border);
+    pointer-events: none;
+    z-index: 50;
+  }
 }
