@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 export default function TerminalProject({ project, index }: { project: any; index: number }) {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
@@ -31,7 +31,7 @@ export default function TerminalProject({ project, index }: { project: any; inde
                     {project.title.join('')}
                 </h2>
             </div>
-            
+
             <div className="mt-8 space-y-2">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground uppercase font-mono">
                     <Cpu className="w-3 h-3" />
@@ -62,7 +62,7 @@ export default function TerminalProject({ project, index }: { project: any; inde
             </div>
 
             <div className="mt-6 flex justify-end">
-                <a 
+                <a
                     href={project.source}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -71,13 +71,13 @@ export default function TerminalProject({ project, index }: { project: any; inde
                         project.button
                     )}
                 >
-                    <Globe className="w-4 h-4" />
-                    Initialize_Link
-                    <ArrowUpRight className="w-4 h-4 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />
+                    {/*<Globe className="w-4 h-4" />*/}
+                    {">_ Git --show"}
+                    {/*<ArrowUpRight className="w-4 h-4 group-hover/link:-translate-y-1 group-hover/link:translate-x-1 transition-transform" />*/}
                 </a>
             </div>
         </div>
-        
+
         {/* Hover Effect Line */}
         {/* <div className={cn(
             "absolute bottom-0 left-0 w-full h-px bg-foreground scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left",

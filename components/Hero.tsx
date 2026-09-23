@@ -33,7 +33,7 @@ export default function Hero() {
             "double-line",
           )}
         >
-{/* 
+{/*
           <div className={cn(
             "grid min-[710px]:hidden grid-rows-[150px_1fr_1fr]",
             "relative after:content-[''] after:absolute after:w-screen after:bottom-0 after:h-px after:bg-border after:pointer-events-none after:z-50 after:left-1/2 after:-translate-x-1/2"
@@ -69,7 +69,7 @@ export default function Hero() {
             <div className="flex flex-row justify-between border-b border-border items-end p-2 gap-5">
                 <div className="flex items-center gap-2 text-text text-xs"><div className="size-2 rounded-full bg-foreground animate-pulse" />Available</div>
                 <div className="w-fit text-xs whitespace-nowrap">
-                  <span className="text-text">Currently :</span><span className="text-foreground">`Building Once`</span>
+                  <span className="text-text">Currently :</span><span className="text-foreground">`Learning Systems`</span>
                 </div>
             </div>
             <div className="flex px-2">
@@ -100,7 +100,7 @@ export default function Hero() {
               <div className="flex flex-row justify-between border-b border-border items-end p-2 gap-2">
                 <div className="flex items-center gap-2 text-text text-xs min-[655px]:text-sm min-[750px]:text-base"><div className="size-2 rounded-full bg-foreground" />Available</div>
                 <SleekBox className="w-[210px] min-[655px]:w-[250px] min-[750px]:w-[300px] text-xs min-[655px]:text-sm min-[750px]:text-base">
-                  <span className="text-white">Currently :</span><span className="text-foreground">`Building Once`</span>
+                  <span className="text-white">Currently :</span><span className="text-foreground">`Learning Systems`</span>
                 </SleekBox>
               </div>
               <div className="row-span-2">
@@ -122,7 +122,7 @@ export default function Hero() {
             <div className="flex justify-between row-span-2 items-end pb-5 gap-4 whitespace-nowrap">
               <div className="">
                 <div className="flex flex-col gap-3 text-foreground pl-2 min-[535px]:pl-6">
-                  <span className="flex items-center gap-2"><PhoneCall className="size-4" /><span className="text-sm text-text">+91 7266854153</span></span>
+                  {/*<span className="flex items-center gap-2"><PhoneCall className="size-4" /><span className="text-sm text-text">+91 7266854153</span></span>*/}
                   <span className="flex items-center gap-2"><Mailbox className="size-4" /><a href="https://mail.google.com/mail/?view=cm&fs=1&to=shubham.arka@gmail.com" target="_blank" rel="noopner noreferer" className="text-sm text-text no-underline">shubham.arka@gmail.com</a></span>
                   <span className="flex items-center gap-2"><Github className="size-4" /><a href="https://github.com/shubham-021" target="_blank" rel="noopner noreferer" className="text-sm text-text">shubham-021</a></span>
                   <span className="flex items-center gap-2"><Twitter className="size-4" /><a href="https://x.com/ShubhamArka" target="_blank" rel="noopner noreferer" className="text-sm text-text">@ShubhamArka</a></span>
