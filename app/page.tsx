@@ -1,8 +1,8 @@
 'use client'
 
 import Hero from "@/components/Hero";
-import Projects from "@/components/Project";
-import ThirdPage from "@/components/Github";
+import TechStack from "@/components/TechStack";
+import CoreSystems from "@/components/CoreSystems";
 import Projects2 from "@/components/Projects2";
 import { StarsBackground } from "@/components/ui/stars-background";
 import { ShootingStars } from "@/components/ui/shooting-stars";
@@ -18,10 +18,10 @@ const Home = memo(function Home(){
       <HeroLayoutGuides />
       <HeroLayoutGuidesMin/>
       <Hero/>
+      <TechStack />
+      <CoreSystems />
       <Projects2/>
-      {/* <ThirdPage/> */}
     </div>
-    
   )
 });
 
