@@ -4,93 +4,307 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #fffffff7;
-  --foreground: #992325;
-  --text: #000000;
-  --border: #fd8f913d;
-  --cards: #FAB6B6;
-  --once: #DE5505;
-  --gloo: #8831D9;
-  --repeating-lines: #f7565639;
-  --pattern: #da525223;
+  --background: #fafafa;
+  --foreground: #18181b;
+  --muted: #71717a;
+  --muted-foreground: #a1a1aa;
+  --border: rgba(0, 0, 0, 0.07);
+  --border-strong: rgba(0, 0, 0, 0.14);
+  --card: rgba(255, 255, 255, 0.85);
+  --card-hover: rgba(244, 244, 245, 0.95);
+  --card-border: rgba(0, 0, 0, 0.07);
+  --card-border-hover: rgba(0, 0, 0, 0.15);
+  --accent: #52525b;
+  --accent-soft: rgba(82, 82, 91, 0.1);
+  --badge-bg: rgba(0, 0, 0, 0.04);
 }
 
 .dark {
-  --background: #000000;
-  --foreground: #708E05;
-  --text: #ffffff;
-  --border: #d8fc5818;
-  --cards: #36392C;
-  --once: #DE5505;
-  --gloo: #8831D9;
-  --repeating-lines: #d7fe5824;
-  --pattern: #b6d0562c;
+  --background: #09090b;
+  --foreground: #e4e4e7;
+  --muted: #71717a;
+  --muted-foreground: #52525b;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --card: rgba(14, 14, 16, 0.7);
+  --card-hover: rgba(22, 22, 26, 0.85);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-border-hover: rgba(255, 255, 255, 0.14);
+  --accent: #a1a1aa;
+  --accent-soft: rgba(161, 161, 170, 0.08);
+  --badge-bg: rgba(255, 255, 255, 0.04);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
-  --color-cards: var(--cards);
-  --color-once: var(--once);
-  --color-gloo: var(--gloo);
-  --color-text: var(--text);
+  --color-border-strong: var(--border-strong);
+  --color-card: var(--card);
+  --color-card-hover: var(--card-hover);
+  --color-card-border: var(--card-border);
+  --color-card-border-hover: var(--card-border-hover);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-arka: var(--font-splash);
+  --font-serif: var(--font-instrument-serif);
 }
 
-@layer utilities {
+html {
+  scroll-behavior: smooth;
+}
 
-  .double-line {
-    position: relative;
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(120, 120, 120, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(120, 120, 120, 0.3);
+}
+
+/* Subtle dot grid */
+.bg-atelier-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+:root:not(.dark) .bg-atelier-grid {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+/* Glass panel */
+.glass-panel {
+  background-color: var(--card);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* Radial mask for organic background vignette fade */
+.radial-mask-vignette {
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 30%, black 25%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 85% 75% at 50% 30%, black 25%, transparent 85%);
+}
+
+/* Atmospheric Ambient Keyframes */
+@keyframes ambient-drift-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
   }
-
-  .line-above {
-    position: relative;
+  33% {
+    transform: translate3d(4vw, 5vh, 0) scale(1.06);
   }
-
-  .line-bottom {
-    position: relative;
+  66% {
+    transform: translate3d(-3vw, 2vh, 0) scale(0.96);
   }
+}
 
-  .double-line::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    width: 100vw;
-    transform: translateX(-50%);
-    height: 24px;
-    top: -24px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    pointer-events: none;
-    z-index: 50;
+@keyframes ambient-drift-reverse {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
   }
-
-  .line-bottom::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    width: 100vw;
-    transform: translateX(-50%);
-    height: 1px;
-    bottom: -10px;
-    background-color: var(--border);
-    pointer-events: none;
-    z-index: 50;
+  33% {
+    transform: translate3d(-5vw, -3vh, 0) scale(0.94);
   }
+  66% {
+    transform: translate3d(3vw, 4vh, 0) scale(1.05);
+  }
+}
 
-  .line-above::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    width: 100vw;
-    transform: translateX(-50%);
-    height: 1px;
-    top: -10px;
-    background-color: var(--border);
-    pointer-events: none;
-    z-index: 50;
+@keyframes ambient-pulse-glow {
+  0%, 100% {
+    opacity: 0.04;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.075;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes substrate-sweep {
+  0% {
+    transform: translateY(-20vh);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.04;
+  }
+  80% {
+    opacity: 0.04;
+  }
+  100% {
+    transform: translateY(120vh);
+    opacity: 0;
+  }
+}
+
+.animate-ambient-slow {
+  animation: ambient-drift-slow 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-ambient-reverse {
+  animation: ambient-drift-reverse 34s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-ambient-pulse {
+  animation: ambient-pulse-glow 18s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.animate-substrate-sweep {
+  animation: substrate-sweep 22s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ambient-slow,
+  .animate-ambient-reverse,
+  .animate-ambient-pulse,
+  .animate-substrate-sweep {
+    animation: none !important;
+  }
+}
+
+/* ── Premium Background Patterns ── */
+
+.bg-dot-grid-fine {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.45) 0.5px,
+    transparent 0.5px
+  );
+  background-size: 48px 48px;
+}
+
+:root:not(.dark) .bg-dot-grid-fine {
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.3) 0.5px,
+    transparent 0.5px
+  );
+}
+
+.bg-dot-grid-tight {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.4) 0.5px,
+    transparent 0.5px
+  );
+  background-size: 32px 32px;
+}
+
+:root:not(.dark) .bg-dot-grid-tight {
+  background-image: radial-gradient(
+    circle,
+    rgba(0, 0, 0, 0.25) 0.5px,
+    transparent 0.5px
+  );
+}
+
+/* ── Orb Drift Animations ── */
+
+@keyframes orb-drift-1 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(5vw, 3vh, 0) scale(1.05);
+  }
+  50% {
+    transform: translate3d(2vw, 7vh, 0) scale(0.97);
+  }
+  75% {
+    transform: translate3d(-3vw, 2vh, 0) scale(1.03);
+  }
+}
+
+@keyframes orb-drift-2 {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(-4vw, -3vh, 0) scale(0.96);
+  }
+  50% {
+    transform: translate3d(-2vw, 5vh, 0) scale(1.04);
+  }
+  75% {
+    transform: translate3d(4vw, -2vh, 0) scale(0.98);
+  }
+}
+
+@keyframes orb-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes scan-luminance {
+  0% {
+    transform: translateY(-30vh);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(130vh);
+    opacity: 0;
+  }
+}
+
+.animate-orb-drift-1 {
+  animation: orb-drift-1 38s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-orb-drift-2 {
+  animation: orb-drift-2 48s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-orb-breathe {
+  animation: orb-breathe 26s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.animate-scan-luminance {
+  animation: scan-luminance 30s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-orb-drift-1,
+  .animate-orb-drift-2,
+  .animate-orb-breathe,
+  .animate-scan-luminance {
+    animation: none !important;
   }
 }

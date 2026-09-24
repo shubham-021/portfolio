@@ -12,6 +12,7 @@ import GitHubStats from "./Github";
 import About from "./About";
 import Favorites from "./Favorites";
 import Footer from "./Footer";
+import { cn } from "@/lib/utils";
 
 export default function Projects() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -50,7 +51,7 @@ export default function Projects() {
                         <ChevronLeft className="w-6 h-6" />
                     </button>
 
-                    <div className="flex-1 max-w-[900px] overflow-hidden">
+                    <div className="flex-1 max-w-225 overflow-hidden">
                         <div
                             className="flex transition-transform duration-500 ease-out"
                             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -86,19 +87,19 @@ export default function Projects() {
                         <button
                             key={index}
                             onClick={() => setCurrentIndex(index)}
-                            className={`w-2 h-2 rounded-full transition-colors ${index === currentIndex
-                                ? 'bg-foreground'
-                                : 'bg-border hover:bg-[#888]'
-                                }`}
+                            className={cn(
+                                'w-2 h-2 rounded-full transition-colors',
+                                index === currentIndex ? 'bg-foreground' : 'bg-border hover:bg-[#888]'
+                            )}
                             aria-label={`Go to project ${index + 1}`}
                         />
                     ))}
                 </div>
             </div>
-            <GitHubStats/>
-            <About/>
+            <GitHubStats />
+            <About />
             {/* <Favorites/> */}
-            <Footer/>
+            <Footer />
         </div>
     )
 }

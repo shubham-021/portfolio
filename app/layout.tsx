@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Splash } from "next/font/google";
+import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
@@ -13,15 +13,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const splash = Splash({
-  variable: "--font-splash",
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument-serif",
   weight: "400",
-  subsets: ["latin"]
-})
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+});
 
 export const metadata: Metadata = {
-  title: "Shubham Singh",
-  description: "Portfolio",
+  title: "Shubham Singh — Systems & Applied AI Engineer",
+  description: "Portfolio of Shubham Singh. Systems thinker, GATE CS qualifier, upstream contributor to vercel/ai, and creator of Relay, Once, and Gloo.",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
@@ -32,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${splash.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} font-sans antialiased bg-background text-foreground selection:bg-emerald-500/20 selection:text-emerald-300 min-h-screen`}
       >
         <ThemeProvider
           attribute="class"

@@ -1,28 +1,44 @@
-'use client'
+'use client';
 
-import Hero from "@/components/Hero";
-import TechStack from "@/components/TechStack";
-import CoreSystems from "@/components/CoreSystems";
-import Projects2 from "@/components/Projects2";
-import { StarsBackground } from "@/components/ui/stars-background";
-import { ShootingStars } from "@/components/ui/shooting-stars";
-import { HeroLayoutGuides, HeroLayoutGuidesMin } from "@/components/LayoutGuides";
-import { memo } from "react";
+import React from 'react';
+import AmbientBackground from '@/components/AmbientBackground';
+import NavigationDock from '@/components/NavigationDock';
+import HeroEditorial from '@/components/HeroEditorial';
+import StackMatrix from '@/components/StackMatrix';
+import ProjectShowcase from '@/components/ProjectShowcase';
+import SubstrateSection from '@/components/SubstrateSection';
+import UpstreamSection from '@/components/UpstreamSection';
+import FooterEditorial from '@/components/FooterEditorial';
+import BackgroundV1 from '@/components/BackgroundV1';
 
-const Home = memo(function Home(){
+export default function Home() {
+  return (
+    <div className="relative min-h-screen text-foreground overflow-x-hidden selection:bg-zinc-500/20 selection:text-foreground">
+      <BackgroundV1 />
 
-  return(
-    <div className="relative bg-background overflow-x-hidden min-[570px]:px-5">
-      <ShootingStars className="fixed" minSpeed={20} minDelay={5000} />
-      <StarsBackground className="fixed"/>
-      <HeroLayoutGuides />
-      <HeroLayoutGuidesMin/>
-      <Hero/>
-      <TechStack />
-      <CoreSystems />
-      <Projects2/>
+      {/* Floating Dynamic Navigation Capsule */}
+      <NavigationDock />
+
+      {/* Main Content Flow */}
+      <main className="relative z-10 flex flex-col">
+        {/* Section 00: Overview & Hero */}
+        <HeroEditorial />
+
+        {/* Section 01: Core Technologies (Moved to top per request) */}
+        <StackMatrix />
+
+        {/* Section 02: Selected Projects */}
+        <ProjectShowcase />
+
+        {/* Section 03: CS Substrate & GATE */}
+        <SubstrateSection />
+
+        {/* Section 04: Upstream Contributions & GitHub Activity */}
+        <UpstreamSection />
+
+        {/* Section 05: Contact & Colophon */}
+        <FooterEditorial />
+      </main>
     </div>
-  )
-});
-
-export default Home;
+  );
+}
