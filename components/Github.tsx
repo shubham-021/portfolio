@@ -23,14 +23,14 @@ const GitHubStats = memo(function GitHubStats() {
             "relative after:content-[''] after:absolute after:h-px after:w-screen after:pointer-events-none after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:bg-border after:z-50",
         )}>
             {/* <HeroLayoutGuides /> */}
-            <div className="relative flex flex-1 max-w-4xl w-full px-4 mb-4">
+            <div className="relative flex flex-1 max-w-4xl w-full px-4 sm:px-6 mb-6">
                 <div className="w-full flex flex-col">
                     <div className={cn(
-                        "w-full flex flex-col gap-5 pb-5",
+                        "w-full flex flex-col gap-6 pb-8",
                         "relative after:content-[''] after:absolute after:h-px after:w-screen after:pointer-events-none after:left-1/2 after:-translate-x-1/2 after:bottom-0 after:bg-border after:z-50",
                         // "before:content-[''] before:pointer-events-none before:absolute before:left-1/2 before:top-2 before:z-50 before:h-px before:w-screen before:-translate-x-1/2 before:bg-border"
                     )}>
-                        <div className="pt-10">
+                        <div className="pt-14 sm:pt-18 md:pt-20">
                             <header className="flex flex-row justify-between items-end gap-8 px-0 w-full">
                                 <div>
                                     <div className="flex whitespace-nowrap items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground mb-2">
@@ -54,9 +54,9 @@ const GitHubStats = memo(function GitHubStats() {
                             <GitHubContributionChart />
                         </div>
                     </div>
-                    <div className="w-full flex flex-col gap-5">
-                        <div className="pt-5">
-                        <div className="w-full flex items-center justify-between my-5">
+                    <div className="w-full flex flex-col gap-6">
+                        <div className="pt-10 sm:pt-14">
+                        <div className="w-full flex items-center justify-between my-6">
                             <header className="flex flex-row justify-between items-end gap-8 px-0 w-full">
                                 <div>
                                     <div className="flex whitespace-nowrap items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground mb-2">

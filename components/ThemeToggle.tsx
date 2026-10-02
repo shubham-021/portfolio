@@ -15,7 +15,7 @@ export function ThemeToggle() {
 
     if (!mounted) {
         return (
-            <div className="size-10 rounded-full border border-border bg-black" />
+            <div className="size-10 rounded-xl border border-border bg-background" />
         )
     }
 

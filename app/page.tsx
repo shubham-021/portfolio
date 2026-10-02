@@ -12,7 +12,7 @@ import { memo } from "react";
 const Home = memo(function Home(){
 
   return(
-    <div className="relative bg-background overflow-x-hidden min-[570px]:px-5">
+    <div className="relative bg-background dark:bg-transparent overflow-x-hidden px-4 sm:px-6 lg:px-8">
       <ShootingStars className="fixed" minSpeed={20} minDelay={5000} />
       <StarsBackground className="fixed"/>
       <HeroLayoutGuides />

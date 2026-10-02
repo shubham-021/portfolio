@@ -99,7 +99,7 @@ const TechBox = memo(function TechBox({
         onMouseEnter={onHover}
         onMouseLeave={onLeave}
         className={cn(
-          'group relative size-14 sm:size-16 rounded-xl flex items-center justify-center cursor-pointer select-none transition-colors duration-200',
+          'group relative size-11 sm:size-14 md:size-16 rounded-xl flex items-center justify-center cursor-pointer select-none transition-colors duration-200',
           'bg-(--cards)/20 hover:bg-(--cards)/40',
           'border border-border hover:border-foreground/60',
           'shadow-xs hover:shadow-md hover:shadow-foreground/5',
@@ -134,7 +134,7 @@ const TechBox = memo(function TechBox({
             onError={handleImgError}
             onLoad={handleImgLoad}
             className={cn(
-              'absolute size-7 sm:size-8 object-contain transition-all duration-200 group-hover:scale-110 pointer-events-none',
+              'absolute size-5 sm:size-7 md:size-8 object-contain transition-all duration-200 group-hover:scale-110 pointer-events-none',
               imgLoaded ? 'opacity-100' : 'opacity-0'
             )}
           />
@@ -149,7 +149,7 @@ export default function TechStack() {
 
   return (
     <section className="relative flex flex-col items-center font-mono border-b border-border">
-      <div className="flex max-w-4xl relative flex-1 w-full flex-col pt-10 pb-10 gap-6 px-4">
+      <div className="flex max-w-4xl relative flex-1 w-full flex-col pt-14 pb-8 sm:pt-18 sm:pb-10 md:pt-10 md:pb-12 gap-8 px-4 sm:px-6">
         {/* Header Spec Sheet */}
         <header className="flex flex-row justify-between items-end gap-8 px-0 w-full">
           <div>
@@ -170,13 +170,13 @@ export default function TechStack() {
 
         <div
           className={cn(
-            'w-full flex flex-col gap-5 pt-2',
+            'w-full flex flex-col gap-6 pt-4',
             "relative before:content-[''] before:absolute before:pointer-events-none before:top-0 before:w-screen before:h-px before:bg-border before:left-1/2 before:-translate-x-1/2 before:z-50"
           )}
         >
           <motion.div
             layout
-            className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-x-3 gap-y-10 sm:gap-x-4 sm:gap-y-12 py-6"
+            className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-x-2.5 gap-y-7 sm:gap-x-4 sm:gap-y-10 pt-10"
           >
             <AnimatePresence mode="popLayout">
               {TECH_ITEMS.map((tech, index) => (

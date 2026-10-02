@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 
 export default function Footer(){
     return(
-        <div className="max-w-4xl w-full font-mono text-xs p-5 border-b border-border z-50">
+        <div className="max-w-4xl w-full font-mono text-xs py-10 sm:py-12 px-4 sm:px-6 border-b border-border z-50">
             <div className={cn(
                 "flex flex-row justify-end gap-2 sm:gap-5",
                 "relative after:content-[''] after:absolute after:h-px after:w-screen after:pointer-events-none after:left-1/2 after:-translate-x-1/2 after:-bottom-1 after:bg-border after:z-50",

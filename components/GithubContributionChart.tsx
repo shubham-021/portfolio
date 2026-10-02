@@ -36,7 +36,7 @@ export default function GitHubContributionChart({ username = "shubham-021" }: { 
                 const result = await response.json();
 
                 // Transform API data to our format
-                const transformedData: ContributionDay[] = result.contributions.map((day: any) => ({
+                const transformedData: ContributionDay[] = result.contributions.map((day: { date: string; count: number; level: number }) => ({
                     date: day.date,
                     count: day.count,
                     level: day.level, // API returns 0-4 intensity
@@ -189,18 +189,18 @@ function ContributionCell({
 function getLevelColor(level: number): string {
     const colors = {
         light: [
-            'bg-[#fef2f2]', // Level 0
-            'bg-[#fecaca]', // Level 1
-            'bg-[#fca5a7]', // Level 2
-            'bg-[#f87171]', // Level 3
-            'bg-[#992325]', // Level 4
+            'bg-[#dbeafe]', // Level 0 (empty)
+            'bg-[#93c5fd]', // Level 1
+            'bg-[#3b82f6]', // Level 2
+            'bg-[#1d4ed8]', // Level 3
+            'bg-[#1e3a8a]', // Level 4
         ],
         dark: [
-            'dark:bg-[#1a1d16]', // Level 0
-            'dark:bg-[#2d3324]', // Level 1
-            'dark:bg-[#4a5339]', // Level 2
-            'dark:bg-[#6b7d4d]', // Level 3
-            'dark:bg-[#708E05]', // Level 4
+            'dark:bg-[#0c1222]', // Level 0 (empty)
+            'dark:bg-[#172554]', // Level 1
+            'dark:bg-[#1e40af]', // Level 2
+            'dark:bg-[#3b82f6]', // Level 3
+            'dark:bg-[#60a5fa]', // Level 4
         ],
     };
     return `${colors.light[level]} ${colors.dark[level]}`;

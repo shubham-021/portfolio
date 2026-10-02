@@ -23,7 +23,7 @@ const CORE_SUBJECTS: CoreSubject[] = [
 export default memo(function CoreSystems() {
   return (
     <section className="relative flex flex-col items-center font-mono border-b border-border">
-      <div className="flex max-w-4xl relative flex-1 w-full flex-col pt-10 pb-12 gap-6 px-4">
+      <div className="flex max-w-4xl relative flex-1 w-full flex-col pt-14 pb-8 sm:pt-18 sm:pb-10 md:pt-20 md:pb-12 gap-8 px-4 sm:px-6">
         {/* Header Spec Sheet */}
         <header className="flex flex-row justify-between items-end gap-8 px-0 w-full">
           <div>
@@ -42,17 +42,15 @@ export default memo(function CoreSystems() {
           </div>
         </header>
 
-        {/* Divider Line & Content */}
         <div
           className={cn(
-            'w-full flex flex-col gap-6 pt-2',
+            'w-full flex flex-col gap-6 pt-4',
             "relative before:content-[''] before:absolute before:pointer-events-none before:top-0 before:w-screen before:h-px before:bg-border before:left-1/2 before:-translate-x-1/2 before:z-50"
           )}
         >
-          {/* One-liner */}
           <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground font-mono">
             <Terminal className="size-3.5 text-foreground shrink-0" />
-            <span>&gt; I don&apos;t just use abstractions — I need to know what&apos;s underneath.</span>
+            <span>I don&apos;t just use abstractions — I need to know what&apos;s underneath.</span>
           </div>
 
           {/* Core Subjects Grid */}
