@@ -22,7 +22,7 @@ export default function Hero() {
   const [timeString, setTimeString] = useState<string>('');
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [screenWidth, setScreenWidth] = useState(0);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
