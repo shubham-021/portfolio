@@ -53,6 +53,8 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => { setScreenWidth(window.innerWidth) }, [])
+
   useEffect(() => {
     let timeout: NodeJS.Timeout;
 
