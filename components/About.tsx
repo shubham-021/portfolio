@@ -11,7 +11,7 @@ const AboutPoints = [
 
 export default function About() {
   return (
-    <div className="max-w-4xl w-full flex flex-col gap-8 justify-start font-mono py-14 sm:py-18 md:py-20 px-4 sm:px-6 z-50">
+    <div className="max-w-4xl w-full flex flex-col gap-8 justify-start font-mono pt-10 md:pt-12 px-4 sm:px-6 z-50">
       <header className="flex justify-between items-end gap-8 px-0 w-full">
         <div>
           <div className="flex whitespace-nowrap items-center gap-2 text-xs uppercase tracking-widest text-muted-foreground mb-2">

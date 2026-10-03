@@ -22,6 +22,7 @@ export default function Hero() {
   const [timeString, setTimeString] = useState<string>('');
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -52,6 +53,25 @@ export default function Hero() {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    const handleResize = () => {
+      clearTimeout(timeout);
+
+      timeout = setTimeout(() => {
+        setScreenWidth(window.innerWidth);;
+      }, 200)
+    }
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(timeout);
+    }
+  }, [])
+
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('shubham.arka@gmail.com');
     setCopiedEmail(true);
@@ -66,11 +86,11 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-[calc(100vh-2rem)] flex flex-col justify-between items-center font-mono border-b border-border pt-5 pb-3">
+    <section className="relative min-h-[calc(100vh-2rem)] flex flex-col justify-between items-center font-mono pt-5 pb-3">
 
       <div className="relative z-10 flex flex-col justify-between flex-1 w-full max-w-4xl gap-8 sm:gap-10 px-2 sm:px-4">
 
-        <header className="w-full flex flex-row items-center justify-between gap-4 pb-4 relative after:content-[''] after:absolute after:bottom-0 after:left-[-0.5rem] after:right-[-0.5rem] sm:after:left-[-1rem] sm:after:right-[-1rem] after:h-px after:bg-border/80">
+        <header className="w-full flex flex-row items-center justify-between gap-4 pb-4 relative after:content-[''] after:absolute after:bottom-0 after:-left-2 after:-right-2 sm:after:-left-4 sm:after:-right-4 after:h-px after:bg-border/80">
           <div className="flex items-center gap-2.5">
             <span className="relative flex h-2.5 w-2.5">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-foreground opacity-75" />
@@ -103,52 +123,75 @@ export default function Hero() {
 
         <div className="w-full grid grid-cols-1 md:grid-cols-[250px_1fr] lg:grid-cols-[280px_1fr] gap-8 md:gap-10 items-start my-auto">
 
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="flex flex-col items-center md:items-start gap-4"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              onMouseMove={handleMouseMove}
-              onMouseLeave={handleMouseLeave}
-              className="w-full flex justify-center md:justify-start"
-            >
-              <div
-                style={{
-                  transform: `perspective(1000px) rotateX(${mousePos.y * -12}deg) rotateY(${mousePos.x * 12}deg)`,
-                  transition: 'transform 0.15s ease-out',
-                }}
-                className="relative p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-xl shadow-xl shadow-zinc-950/5 dark:shadow-black/20 w-full max-w-60 sm:max-w-65"
-              >
-                <span className="absolute top-3 left-3 size-2 border-t border-l border-zinc-300 dark:border-zinc-700" />
-                <span className="absolute top-3 right-3 size-2 border-t border-r border-zinc-300 dark:border-zinc-700" />
-                <span className="absolute bottom-3 left-3 size-2 border-b border-l border-zinc-300 dark:border-zinc-700" />
-                <span className="absolute bottom-3 right-3 size-2 border-b border-r border-zinc-300 dark:border-zinc-700" />
-
+          {(screenWidth < 720) ? (
+            <div className='flex items-center gap-4'>
+              <div className="relative w-full max-w-20 p-1 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-xl shadow-xl shadow-zinc-950/5 dark:shadow-black/20">
                 <div className="relative aspect-square w-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950">
-                  <div className="size-65 bg-[url(/profile.jpg)] transition-transform duration-700 hover:scale-110 bg-center bg-size-[auto_300px]" />
+                  <div className="size-20 bg-[url(/profile.jpg)] transition-transform duration-700 hover:scale-110 bg-center bg-size-[auto_200px]" />
+                </div>
+              </div>
+              <div className="flex flex-col items-start gap-1.5 text-center">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-muted-foreground uppercase tracking-widest font-mono">ALIAS //</span>
+                  <span className="font-arka text-2xl sm:text-3xl text-foreground font-bold leading-none">
+                    Arka
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span>he/him</span>
+                  <span className="text-border">·</span>
+                  <span className="text-text/70">Learning computers</span>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="flex flex-col items-center md:items-start gap-4"
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                className="w-full flex justify-center md:justify-start"
+              >
+                <div
+                  style={{
+                    transform: `perspective(1000px) rotateX(${mousePos.y * -12}deg) rotateY(${mousePos.x * 12}deg)`,
+                    transition: 'transform 0.15s ease-out',
+                  }}
+                  className="relative p-4 rounded-2xl border border-zinc-200/80 dark:border-zinc-800/80 bg-white/50 dark:bg-zinc-900/40 backdrop-blur-xl shadow-xl shadow-zinc-950/5 dark:shadow-black/20 w-full max-w-60 sm:max-w-65"
+                >
+                  <span className="absolute top-3 left-3 size-2 border-t border-l border-zinc-300 dark:border-zinc-700" />
+                  <span className="absolute top-3 right-3 size-2 border-t border-r border-zinc-300 dark:border-zinc-700" />
+                  <span className="absolute bottom-3 left-3 size-2 border-b border-l border-zinc-300 dark:border-zinc-700" />
+                  <span className="absolute bottom-3 right-3 size-2 border-b border-r border-zinc-300 dark:border-zinc-700" />
+
+                  <div className="relative aspect-square w-full rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-950">
+                    <div className="size-65 bg-[url(/profile.jpg)] transition-transform duration-700 hover:scale-110 bg-center bg-size-[auto_300px]" />
+                  </div>
+                </div>
+              </motion.div>
+
+              <div className="w-full flex flex-col items-center md:items-start gap-1.5 text-center md:text-left">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-muted-foreground uppercase tracking-widest font-mono">ALIAS //</span>
+                  <span className="font-arka text-2xl sm:text-3xl text-foreground font-bold leading-none">
+                    Arka
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <span>he/him</span>
+                  <span className="text-border">·</span>
+                  <span className="text-text/70">Learning computers</span>
                 </div>
               </div>
             </motion.div>
-
-            <div className="w-full flex flex-col items-center md:items-start gap-1.5 text-center md:text-left">
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-muted-foreground uppercase tracking-widest font-mono">ALIAS //</span>
-                <span className="font-arka text-2xl sm:text-3xl text-foreground font-bold leading-none">
-                  Arka
-                </span>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <span>he/him</span>
-                <span className="text-border">·</span>
-                <span className="text-text/70">Learning computers</span>
-              </div>
-            </div>
-          </motion.div>
+          )}
 
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -172,7 +215,7 @@ export default function Hero() {
 
             <div className="relative pl-4 border-l-2 border-foreground/60 py-1 bg-background/40">
               <p className="text-sm sm:text-base text-text/90 font-mono leading-relaxed">
-                I love building things and getting into the details — understanding how systems actually work from the base level.
+                I love getting to the base level
               </p>
             </div>
 
@@ -230,7 +273,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <footer className="w-full pt-4 relative before:content-[''] before:absolute before:top-0 before:left-[-0.5rem] before:right-[-0.5rem] sm:before:left-[-1rem] sm:before:right-[-1rem] before:h-px before:bg-border/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+        <footer className="w-full pt-4 relative before:content-[''] before:absolute before:top-0 before:-left-2 before:-right-2 sm:before:-left-4 sm:before:-right-4 before:h-px before:bg-border/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
           <div className="flex flex-wrap items-center gap-4 text-text/80">
             <a
               href="mailto:shubham.arka@gmail.com"
@@ -269,6 +312,6 @@ export default function Hero() {
         </footer>
 
       </div>
-    </section>
+    </section >
   );
 }

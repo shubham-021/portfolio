@@ -148,8 +148,11 @@ export default function TechStack() {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
-    <section className="relative flex flex-col items-center font-mono border-b border-border">
-      <div className="flex max-w-4xl relative flex-1 w-full flex-col pt-14 pb-8 sm:pt-18 sm:pb-10 md:pt-10 md:pb-12 gap-8 px-4 sm:px-6">
+    <section className={cn(
+      "relative flex flex-col items-center font-mono",
+      "relative before:content-[''] before:absolute before:pointer-events-none before:top-0 before:w-screen before:h-px before:bg-border before:left-1/2 before:-translate-x-1/2 before:z-50"
+    )}>
+      <div className="flex max-w-4xl relative flex-1 w-full flex-col pt-14 pb-8 sm:pb-10 md:pt-10 md:pb-12 gap-8 px-4 sm:px-6">
         {/* Header Spec Sheet */}
         <header className="flex flex-row justify-between items-end gap-8 px-0 w-full">
           <div>
@@ -176,7 +179,7 @@ export default function TechStack() {
         >
           <motion.div
             layout
-            className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-9 gap-x-2.5 gap-y-7 sm:gap-x-4 sm:gap-y-10 pt-10"
+            className="grid grid-cols-6 sm:grid-cols-9 md:grid-cols-9 gap-x-2.5 gap-y-7 sm:gap-x-4 sm:gap-y-10 pt-5 sm:pt-10"
           >
             <AnimatePresence mode="popLayout">
               {TECH_ITEMS.map((tech, index) => (

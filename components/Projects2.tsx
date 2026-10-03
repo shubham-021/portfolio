@@ -13,9 +13,12 @@ import { cn } from "@/lib/utils";
 
 export default function Projects2() {
   return (
-    <div id="projects" className="min-h-screen relative flex flex-col items-center font-mono border-b border-border">
+    <div id="projects" className={cn(
+      "min-h-screen relative flex flex-col items-center font-mono",
+      "relative before:content-[''] before:absolute before:pointer-events-none before:top-0 before:w-screen before:h-px before:bg-border before:left-1/2 before:-translate-x-1/2 before:z-50"
+    )}>
 
-      <div className="flex max-w-4xl relative flex-1 w-full flex-col pt-14 sm:pt-18 md:pt-20 gap-8">
+      <div className="flex max-w-4xl relative flex-1 w-full flex-col pt-14 gap-8">
 
         <header className="flex flex-row justify-between items-end gap-8 px-4 sm:px-6">
           <div>
