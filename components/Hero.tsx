@@ -142,7 +142,7 @@ export default function Hero() {
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <span>he/him</span>
                   <span className="text-border">·</span>
-                  <span className="text-text/70">Learning computers</span>
+                  <span className="text-text/70">Learning Systems</span>
                 </div>
               </div>
             </div>
@@ -189,7 +189,7 @@ export default function Hero() {
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <span>he/him</span>
                   <span className="text-border">·</span>
-                  <span className="text-text/70">Learning computers</span>
+                  <span className="text-text/70">Learning Systems</span>
                 </div>
               </div>
             </motion.div>
@@ -217,7 +217,7 @@ export default function Hero() {
 
             <div className="relative pl-4 border-l-2 border-foreground/60 py-1 bg-background/40">
               <p className="text-sm sm:text-base text-text/90 font-mono leading-relaxed">
-                I love getting to the base level
+                I deal in small potato stuff
               </p>
             </div>
 

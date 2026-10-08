@@ -4,7 +4,7 @@ import { SleekBox } from "./Sleek";
 const AboutPoints = [
   "Hey, I'm Shubham Singh ,a full-stack developer.",
   "Graduated in 2025 with BTech in CSE from Lucknow University.",
-  "Qualified GATE 2024, 2025 and 2026 conducted by IISc Banglore and IIT Roorkee('25), Guwahati('26).",
+  "Qualified GATE 2024, 2025 and 2026 conducted by IISc Banglore, IIT Roorkee, IIT Guwahati.",
   "I work mostly with JavaScript stack, right now learning systems and rust",
   "That's it. Nothing much to tell about...`yet`"
 ]
@@ -35,7 +35,7 @@ export default function About() {
         )}>
           {AboutPoints.map((a, i) => (
             <div key={i} className="flex gap-2 items-center">
-              <div className="size-[5px] rounded-full bg-text" />
+              <div className="size-1.25 rounded-full bg-text" />
               <div className="text-sm">
                 {a}
               </div>
